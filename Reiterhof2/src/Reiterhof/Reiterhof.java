@@ -11,12 +11,17 @@ public class Reiterhof {
 	private ArrayList<Reiterin> reiterinnen;
 	private Paar reitpaar;
 	
+	/**
+	 * Konstruktor des Reiterhofs. Ruft die Zuordnen-Funktion für das Reitpaar auf. Wenn die Verteilung mit Wünschen nicht perfekt ist, dann werden Wünsche nicht mehr als Bedingung angesehen
+	 * @param pferde
+	 * @param reiterinnen
+	 */
 	public Reiterhof (ArrayList<Pferd> pferde, ArrayList<Reiterin> reiterinnen) {
 		this.pferde=pferde;
 		this.reiterinnen=reiterinnen;
 		this.reitpaar = zuordnenWunsch (pferde, reiterinnen);
 		if (reitpaar.getMatches() < reiterinnen.size() * 2) {
-			System.out.println("Hier muss nachgebessert werden!");
+			this.reitpaar = zuordnen(pferde, reiterinnen);
 		}
 //		System.out.println("Reiterinnen: ");
 //		for (int i =0; i<reiterinnen.size();i++) {
@@ -31,6 +36,12 @@ public class Reiterhof {
 //		System.out.println("\n");
 	}
 	
+	/**
+	 * Findet rekursiv das optimale Match zwischen Reiterinnen und Pferden.Wünsche werden als Verpflichtung angesehen.
+	 * @param pferde
+	 * @param reiterinnen
+	 * @return Paar
+	 */
 	public Paar zuordnenWunsch(List<Pferd> pferde, List<Reiterin> reiterinnen) {
 		Paar paar = new Paar ();
 		for (Reiterin reiterin: reiterinnen) {
@@ -62,6 +73,12 @@ public class Reiterhof {
 		return paar;
 	}
 	
+	/**
+	 * Findet rekursiv das optimale Match zwischen Reiterinnen und Pferden. Wünsche werden als fakultativ angesehen, deshalb gibt es mehr Kombinationsmöglichkeiten und die Methode ist langsamer.
+	 * @param pferde
+	 * @param reiterinnen
+	 * @return Paar
+	 */
 	public Paar zuordnen(List<Pferd> pferde, List<Reiterin> reiterinnen) {
 		Paar paar = new Paar ();
 		for (Reiterin reiterin: reiterinnen) {
@@ -93,14 +110,26 @@ public class Reiterhof {
 		return paar;
 	}
 
+	/**
+	 * Getter für Pferde
+	 * @return ArrayList<Pferd>
+	 */
 	public ArrayList<Pferd> getPferde() {
 		return pferde;
 	}
 
+	/**
+	 * Getter für Reiterinnen
+	 * @return ArrayList<Reiterin>
+	 */
 	public ArrayList<Reiterin> getReiterinnen() {
 		return reiterinnen;
 	}
 
+	/**
+	 * Getter für das Reitpaar
+	 * @return Paar
+	 */
 	public Paar getReitpaar() {
 		return reitpaar;
 	}

@@ -3,8 +3,15 @@ package Reiterhof;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/*
+ * @author Tom Geisler
+ */
 public class Main {
 
+	/**
+	 * Startet das Programm. Erstellt Listen aus Reiterinnen und Pferden und gibt die optimale Kombination aus
+	 * @param Konsolenparameter args
+	 */
 	public static void main(String[] args) {
 		ArrayList<Reiterin> reiterinnen = new ArrayList<Reiterin> ();
 		ArrayList<Pferd> pferde = new ArrayList<Pferd>();
@@ -14,6 +21,10 @@ public class Main {
 		System.out.println(reiterhof.getReitpaar().toString());
 	}
 		
+	/**
+	 * Eingabe der Pferde mit Namen + Zahl für die Eigenschaft.
+	 * @return ArrayList vom Typ Pferd
+	 */
 		public static ArrayList<Pferd> eingabePferde(){
 			Pferd alex = new Pferd("Alex", 1);
 			Pferd nicki = new Pferd("Nicki", 2);
@@ -37,6 +48,10 @@ public class Main {
 			return pferde;
 		}
 		
+		/**
+		 * Eingabe der Reiterinnen mit Namen, Wunschliste und Zahl für das Können
+		 * @return ArrayList vom Typ Reiterin
+		 */
 		public static ArrayList<Reiterin> eingabeReiterinnen(){
 			ArrayList<String> anjasWuensche = new ArrayList<String>();
 			anjasWuensche.add("Nicki");
